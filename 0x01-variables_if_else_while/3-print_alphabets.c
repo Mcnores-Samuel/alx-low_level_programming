@@ -10,7 +10,7 @@ int main(void)
 int i = 0;
 char alphabet[52] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-while (i <= 52)
+while (i < 52)
 {
 putchar(alphabet[i]);
 i++;
