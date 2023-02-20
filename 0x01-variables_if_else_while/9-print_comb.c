@@ -1,4 +1,4 @@
-#include <stdio.h.>
+#include <stdio.h>
 
 /**
  * main - prints comma seperated single numbers.
