@@ -12,7 +12,7 @@ int i;
 for (i = 1; i <= 10; i++)
 {
 int x;
-for (x = 0; x < 27; x++)
+for (x = 0; x <= 25; x++)
 {
 _putchar(character[x]);
 }

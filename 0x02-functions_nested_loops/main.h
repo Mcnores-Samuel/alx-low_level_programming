@@ -11,5 +11,6 @@ void print_alphabet_x10(void);
 int _islower(int c);
 /*return 1 if c is of type alphabet otherwise 0*/
 int _isalpha(int c);
-
+int print_sign(int n);
+int _abs(int);
 #endif
