@@ -8,20 +8,8 @@
 
 int _islower(int c)
 {
-char data_c[] = "abcdefghijklmnopqrstuvwxyz";
-
-int i;
-
-for (i = 0; i < 26; i++)
-{
-if (c == data_c[i])
-{
-return (1);
-}
-else
-{
-return (0);
-}
-}
-return (0);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	else
+		return (0);
 }

@@ -8,19 +8,8 @@
 
 int _isalpha(int c)
 {
-int i;
-char data_c[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-for (i = 0; i < 52; i++)
-{
-if (c == data_c[i])
-{
-return (1);
-}
-else
-{
-return (0);
-}
-}
-return (0);
+	if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')))
+		return (1);
+	else
+		return (0);
 }
