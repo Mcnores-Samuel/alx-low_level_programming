@@ -25,5 +25,6 @@ return (num);
 int print_last_digit(int num)
 {
 int last = num % 10;
+_putchar(last + '0');
 return (_abs(last));
 }
