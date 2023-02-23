@@ -34,7 +34,7 @@ printf(", ");
 }
 else
 {
-printf("98\n");
+printf("98");
 }
 printf("\n");
 }
