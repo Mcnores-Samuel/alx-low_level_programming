@@ -13,19 +13,23 @@ for (x = 1; x <= size; x++)
 {
 if ((x % 3 == 0) && (x % 5 == 0))
 {
-printf("FizzBuzz ");
+printf("FizzBuzz");
+printf(" ");
 }
 else if (x % 5 == 0)
 {
-printf("Buzz ");
+printf("Buzz");
+printf(" ");
 }
 else if (x % 3 == 0)
 {
-printf("Fizz ");
+printf("Fizz");
+printf(" ");
 }
-else 
+else
 {
-printf("%d ", x);
+printf("%d", x);
+printf(" ");
 }
 }
 printf("\n");
