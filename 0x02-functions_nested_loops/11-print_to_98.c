@@ -14,10 +14,10 @@ if (n < count_limit)
 {
 for (; n <= count_limit; n++)
 {
-printf("%d, ", n);
-if (n == count_limit)
+printf("%d", n);
+if (n != count_limit)
 {
-printf("\n");
+printf(", ");
 }
 }
 }
@@ -25,11 +25,16 @@ else if (n > count_limit)
 {
 for (; n >= count_limit; n--)
 {
-printf("%d, ", n);
-if (n == count_limit)
+printf("%d", n);
+if (n != count_limit)
 {
-printf("%d\n", n);
+printf(", ");
 }
 }
 }
+else
+{
+printf("98\n");
+}
+printf("\n");
 }
