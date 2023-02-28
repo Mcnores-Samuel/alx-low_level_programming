@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*
+/**
  * _puts - prints the string to the standard output.
  * @str: string to print.
  * Return: void.
