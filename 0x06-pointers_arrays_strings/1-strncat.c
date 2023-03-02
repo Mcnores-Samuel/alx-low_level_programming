@@ -21,6 +21,7 @@ char *_strncat(char *dest, char *src, int n)
 	while (i < n && *src != '\0')
 	{
 		*ptr_to_endofstr++ = *src++;
+		i++;
 	}
 	*ptr_to_endofstr = '\0';
 
