@@ -11,20 +11,19 @@
 
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i;
+	int j = 0;
 
-	for (i = 0; src[i] != '\0'; i++)
+	for (j = 0; src[j] != '\0'; j++)
 	{
-		if (i < n)
+		if (j < n)
 		{
-			dest[i] = src[i];
+			dest[j] = src[j];
 		}
 	}
 
-	while (i > n)
+	for (; j < n; j++)
 	{
-		dest[i] = '\0';
-		i++;
+		dest[j] = '\0';
 	}
 
 	return (dest);
