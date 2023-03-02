@@ -18,5 +18,5 @@ char *_strcat(char *dest, char *src)
 	}
 	endofstr = '\0';
 
-	return dest;
+	return (dest);
 }
