@@ -1,8 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 
 /**
  * rot13 - encodes a string using rot13.
@@ -10,18 +6,22 @@
  * Return: pointer to encoded string.
  */
 
-char *rot13(char *str)
+char *rot13(char *string)
 {
-	int i, shift;
-	int len = strlen(str);
+	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char scrumbled[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int x = 0;
+	int y = 0;
 
-	for (i = 0; i < len; i++)
+	while (string[x] != '\0')
 	{
-		if (isalpha(str[i]))
+		for (y = 0; alpha[y] != '\0' && string[x] != alpha[y]; y++)
+			;
+		if (y < 52)
 		{
-			shift = isupper(str[i]) ? 'A' : 'a';
-			str[i] = (str[i] - shift + 13) % 26 + shift;
+			string[x] = scrumbled[y];
 		}
+		x++;
 	}
-	return (str);
+	return (string);
 }
