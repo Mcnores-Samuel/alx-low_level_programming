@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strchr - s used to search for a specific character in a string.
@@ -20,5 +21,5 @@ char *_strchr(char *s, char c)
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
