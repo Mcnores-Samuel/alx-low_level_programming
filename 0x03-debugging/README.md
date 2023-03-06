@@ -1,4 +1,5 @@
-# 0x03-debugging## 3-print_remaining_days.c
+# 0x03-debugging
+## 3-print_remaining_days.c
 * print_remaining_days - takes a date and prints how many days are
 * left in the year, taking leap years into account
 * @month: month in number format
