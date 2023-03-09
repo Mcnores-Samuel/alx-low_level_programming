@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * prime -  checks if a given number "n" is a prime number.
+ * isPrime -  checks if a given number "n" is a prime number.
  * @divisor: the divisor being tested
  * @n: the number being tested for primality.
  * Return: 0 if n is not a prime or 1 if true.
