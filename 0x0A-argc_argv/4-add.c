@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
+#include <ctype.h>
 
 /**
  * main - adds numbers.
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < argc - 1; i++)
 	{
-		if (*argv[i + 1] >= 40 && *argv[i + 1] <= 57)
+		if (isdigit(argv[i + 1]))
 		{
 			arr[i] = atoi(argv[i + 1]);
 		}
