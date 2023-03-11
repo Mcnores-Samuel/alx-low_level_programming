@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		result *= arr[x];
 	}
 
-	if (argc == 1)
+	if (argc == 1 || argc != 3)
 	{
 		printf("Error\n");
 		free(arr);
