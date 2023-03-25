@@ -18,7 +18,8 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *ptr;
-	int len = strlen(s1) + n, i, j = 0;
+	int len = strlen(s1) + n, i;
+	unsigned int j = 0;
 
 	ptr = (char *)calloc(len, sizeof(char));
 
