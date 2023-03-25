@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 /**
- * declare a pointer to the memory block
- * allocate memory using malloc of size b of the particular datatype
- * check if memory allocation was successful or return NULL if not
+ * malloc_checked - allocates memory using malloc
+ * @b: the size of momery bytes to be allocated.
+ * Return: pointer to the allocated momery or 98 otherwise
  */
 
 void *malloc_checked(unsigned int b)
