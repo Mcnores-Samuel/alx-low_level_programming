@@ -1,58 +1,52 @@
 #include "main.h"
-#include <string.h>
 #include <stdlib.h>
 
 /**
- * declare a pointer to the memory block to be allocated;
- * declare necessary helping variables
- * use strlen to determine length of the first string
- * the second string length will be determined by the n byte
- * add first string length + n byte value to get the full length of
- * the resulting string and use the added to allocate the memory
- * use the loop i iterating through the first string and when done move the curser to the end
- * then iterate the second string and assign iterated values to the heap memory
- * 
- * 
-*/
-
+  * string_nconcat - concatenates two strings
+  * @s1: pointer to the first string to concatenate
+  * @s2: pointer to the second string
+  * @n: n bytes of the second string
+  *
+  * Return: pointer to the concatenated string.
+  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *ptr;
-	unsigned int size, i, j, len;
+	unsigned int i = 0, j = 0, k = 0, l = 0;
+	char *str;
 
 	if (s1 == NULL)
 		s1 = "";
-
 	if (s2 == NULL)
 		s2 = "";
 
-	size = strlen(s1);
-	len = strlen(s2);
+	while (s1[i])
+		i++;
 
-	if (n >= len)
-	{
-		size = size + len;
-	}
+	while (s2[k])
+		k++;
+
+	if (n >= k)
+		l = i + k;
 	else
-	{
-		size = size + n;
-	}
+		l = i + n;
 
-	ptr = (char *)calloc(size + 1, sizeof(char));
-
-	if (ptr == NULL)
-	{
+	str = malloc(sizeof(char) * l + 1);
+	if (str == NULL)
 		return (NULL);
-	}
 
-	for (i = 0; i < size; i++)
+	k = 0;
+	while (j < l)
 	{
-		ptr[i] = s1[i];
+		if (j <= i)
+			str[j] = s1[j];
+
+		if (j >= i)
+		{
+			str[j] = s2[k];
+			k++;
+		}
+		j++;
 	}
-
-	for (j = 0; j < len; j++)
-		ptr[i + j] = s2[j];
-	ptr[i + j] = '\0';
-
-	return (ptr);
+	str[j] = '\0';
+	return (str);
 }
