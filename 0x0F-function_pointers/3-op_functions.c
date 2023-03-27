@@ -44,7 +44,7 @@ int op_mul(int a, int b)
  */
 int op_div(int a, int b)
 {
-	if (a == 0 || b == 0)
+	if (b == 0)
 	{
 		printf("Error\n");
 		exit(100);
@@ -53,14 +53,14 @@ int op_div(int a, int b)
 }
 
 /**
- * op_add - calculats the remainder.
+ * op_mod - calculats the remainder.
  * @a: integer
  * @b: integer
  * Return: remainder after division of a and b.
  */
 int op_mod(int a, int b)
 {
-	if (a == 0 || b == 0)
+	if (b == 0)
 	{
 		printf("Error\n");
 		exit(100);
