@@ -6,7 +6,7 @@
  * @array: pointer to the array to search.
  * @size: the size of an array.
  * @cmp: pointer to a function to perform the search.
- * Return: index of the non mutching element or 0 if not.
+ * Return: index of the non mutching element or -1 if not.
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
@@ -23,6 +23,6 @@ int int_index(int *array, int size, int (*cmp)(int))
 		}
 	}
 
-	return (0);
+	return (-1);
 
 }
