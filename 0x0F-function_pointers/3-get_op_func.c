@@ -2,8 +2,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+ *get_op_func - selects the operation to perform
+ *@s: operation to perform
+ *
+ *Return: pointer to the operation function
+ */
 int (*get_op_func(char *s))(int, int)
 {
+	op_t ops[] = {
 		{"+", op_add},
 		{"-", op_sub},
 		{"*", op_mul},
@@ -15,13 +22,12 @@ int (*get_op_func(char *s))(int, int)
 	int i = 0;
 
 	while (ops[i].op != NULL)
-	while(ops[i].op != NULL)
 	{
-		if (*s == *(ops[i]).op && *s != '\0')
-		{
+		if (*s == *(ops[i].op) && *s == '\0')
 			return (ops[i].f);
-		}
+		i++;
 	}
+
 	printf("Error\n");
 	exit(99);
 }
