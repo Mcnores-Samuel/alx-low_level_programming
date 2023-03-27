@@ -13,8 +13,8 @@
 
 int main(int argc, char *argv[])
 {
-	int (*fun_ptr)(int, int);
-	int num1, num2;
+	int (*ptr)(int, int);
+	int n1, n2, n3;
 
 	if (argc != 4)
 	{
@@ -22,10 +22,11 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
+	n1 = atoi(argv[1]);
+	n2 = atoi(argv[3]);
 
-	fun_ptr = get_op_func(argv[2]);
-	printf("%d\n", fun_ptr(num1, num2));
-	exit(EXIT_SUCCESS);
+	ptr = get_op_func(argv[2]);
+	n3 = ptr(n1, n2);
+	printf("%d\n", n3);
+	return (0);
 }
