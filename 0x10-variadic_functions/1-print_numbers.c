@@ -25,13 +25,9 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 			int next = va_arg(arg_ptr, int);
 
 			printf("%d", next);
-			if (separator != NULL)
+			if (separator != NULL && i < n - 1)
 			{
-
-				if (i != n - 1)
-				{
-					printf("%s", separator);
-				}
+				printf("%s", separator);
 			}
 		}
 		printf("\n");
