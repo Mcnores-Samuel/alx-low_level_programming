@@ -3,11 +3,11 @@
 #include <stdio.h>
 
 /**
- * print_numbers - prints numbers seperated by the seperator.
- * @seperator: the seperator to seperate the numbers
+ * print_numbers - prints numbers separated by the separator.
+ * @separator: the separator to separate the numbers
  * @n: the number of integers passed to the function.
  * Description: the function takes as many parameters as desired
- * and will be printed to the console seperated by the seperator.
+ * and will be printed to the console separated by the separator.
  * Return: void / nothing.
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
@@ -27,7 +27,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 			{
 				printf("%d", next);
 
-				if (i != n -1)
+				if (i != n - 1)
 				{
 					printf("%s", separator);
 				}
