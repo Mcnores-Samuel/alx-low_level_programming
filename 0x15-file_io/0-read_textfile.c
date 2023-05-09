@@ -1,40 +1,40 @@
-#include "file.h"
+#include "main.h"
 
 /**
- * read_textfile - reads text and prints it to the POSIX standard output
+ * read_textfile - reads a text file and prints it to the
+ * POSIX standard output.
  * @filename: pointer to the file to read from.
- * @letters: number of bytes or letters to read from the file.
- * Return: number of bytes read and printed or 0 if error occured.
+ * @letters: number of bytes to read.
+ * Return: the actual number of letters it could read and print.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
+	int file_d, written_d;
+	size_t data_read;
+	char *size;
 
-	int file_d, bytes = 0;
-	char *data;
+	size = (char *)malloc(sizeof(char) * letters);
 
+	if (size == NULL)
+		return (0);
 	if (filename == NULL)
 		return (0);
-	if (letters > 0)
-	{
-		data = (char *)malloc(sizeof(char) * letters);
-		if (data == NULL)
-			return (0);
-	}
 
-	file_d = open(filename, O_RDONLY);
-		if (file_d == -1)
-			return (0);
-	if (read(file_d, data, letters) == -1)
+	file_d = open(filename, O_RDONLY, 0600);
+	if (file_d == -1)
 	{
 		close(file_d);
 		return (0);
 	}
-	while (data[bytes] != EOF && bytes < letters)
-	{
-		write(STDIN_FILENO, &data[bytes], 1);
-		bytes++;
-	}
+
+	data_read = read(file_d, size, letters);
+	size[letters] = '\0';
 	close(file_d);
-	free(data);
-	return (bytes);
+
+	written_d = write(STDOUT_FILENO, size, data_read);
+
+	if (written_d == -1)
+		return (0);
+
+	return (written_d);
 }
