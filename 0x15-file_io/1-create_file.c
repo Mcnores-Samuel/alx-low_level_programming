@@ -18,13 +18,11 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	while (text_content[bytes] != '\0' && text_content != NULL)
-	{
-		if (write(file_d, &text_content[bytes], 1) == -1)
-		{
-			close(file_d);
-			return (-1);
-		}
 		bytes++;
+	if (write(file_d, &text_content[bytes], bytes) == -1)
+	{
+		close(file_d);
+		return (-1);
 	}
 	close(file_d);
 	return (1);
