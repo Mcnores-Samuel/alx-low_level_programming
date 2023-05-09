@@ -8,7 +8,7 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int file_d, bytes = 0;
+	int file_d, bytes = 0, d_read;
 
 	if (filename == NULL)
 		return (-1);
@@ -19,7 +19,8 @@ int create_file(const char *filename, char *text_content)
 
 	while (text_content[bytes] != '\0' && text_content != NULL)
 		bytes++;
-	if (write(file_d, &text_content[bytes], bytes) == -1)
+	d_read = write(file_d, &text_content[bytes], bytes);
+	if (d_read == -1)
 	{
 		close(file_d);
 		return (-1);
