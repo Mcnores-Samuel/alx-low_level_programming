@@ -8,24 +8,26 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int file_d, bytes = 0, d_read;
+	int file_d, written_d, bytes = 0;
 
-	if (filename == NULL)
-		return (-1);
-	file_d = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
-
+	file_d = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (file_d == -1)
-		return (-1);
-
-	while (text_content[bytes] != '\0' && text_content != NULL)
-		bytes++;
-	d_read = write(file_d, &text_content[bytes], bytes);
-	if (d_read == -1)
 	{
-		close(file_d);
 		return (-1);
 	}
-	close(file_d);
+
+	if (text_content != NULL)
+	{
+		while (text_content[bytes] != '\0')
+			bytes++;
+
+		written_d = write(file_d, text_content, bytes);
+		if (written_d == -1)
+		{
+			close(file_d);
+			return (-1);
+		}
+		close(file_d);
+	}
 	return (1);
 }
-
