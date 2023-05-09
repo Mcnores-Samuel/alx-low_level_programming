@@ -9,8 +9,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int file_d;
-	size_t bytes;
+	int file_d, bytes = 0;
 	char *data;
 
 	data = (char *)malloc(sizeof(char) * letters);
@@ -31,7 +30,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	bytes = write(STDOUT_FILENO, data, bytes);
 
-	if (bytes == -1)
+	if (bytes == EOF)
 		return (0);
 	free(data);
 	return (bytes);
