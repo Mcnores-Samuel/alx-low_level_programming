@@ -142,10 +142,12 @@ void abiv_type_and_entry(Elf64_Ehdr **file)
  * @argv: pointer to array of arguments passed.
  * Return: 0 on success or -1 on failure.
  */
-int main(int argc, char **argv)
+int main(int argc __attribute__((unused)), char **argv)
 {
 	int fd;
 	off_t size;
+	void *address;
+	Elf64_Ehdr *file;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -157,17 +159,14 @@ int main(int argc, char **argv)
 		close(fd);
 		return (-1);
 	}
-
-	void *address = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
-
+	address = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
 	if (address == MAP_FAILED)
 	{
 		perror("address");
 		close(fd);
 		return (-1);
 	}
-	Elf64_Ehdr *file = (Elf64_Ehdr *)address;
-
+	file = (Elf64_Ehdr *)address;
 	printf("ELF Header:\n");
 	print_elf_magic(&file);
 	print_elf_class(&file);
