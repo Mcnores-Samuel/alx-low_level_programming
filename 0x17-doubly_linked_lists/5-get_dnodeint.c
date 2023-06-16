@@ -2,7 +2,7 @@
 
 /**
  * get_dnodeint_at_index - gets a node at a position index.
- * @head: pointer to the head node.
+ * @head: pointer to the head node of the dlistint_t list.
  * Return: pointer to the node at position index or NULL otherwise.
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
