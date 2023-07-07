@@ -44,7 +44,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int pos, n = 0;
 	hash_node_t *data = NULL, *current;
 
-	if (key == NULL)
+	if (ht == NULL || key == NULL || *key == '\0')
 		return (0);
 
 	pos = key_index((unsigned char *)key, ht->size);
