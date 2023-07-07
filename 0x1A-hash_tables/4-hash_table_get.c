@@ -20,9 +20,14 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	current = ht->array[pos];
 
-	if (current != NULL && strcmp(current->key, key) == 0)
-		value = current->value;
-	else
-		value = NULL;
-	return (value);
+	while (current != NULL)
+	{
+		if (current != NULL && strcmp(current->key, key) == 0)
+		{
+			value = current->value;
+			return (value);
+		}
+		current = current->next;
+	}
+	return (NULL);
 }
