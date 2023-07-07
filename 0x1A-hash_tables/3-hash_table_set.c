@@ -53,7 +53,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	pos = key_index((unsigned char *)key, ht->size);
 	data->key = _strdup((char *)key);
-	data->value = _strdup((char *)value);
+	data->value = value != NULL ? _strdup((char *)value) : NULL;
 
 	if (ht->array[pos] == NULL)
 	{
