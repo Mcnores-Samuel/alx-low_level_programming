@@ -41,30 +41,35 @@ char *_strdup(char *str)
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int pos;
-	hash_node_t *data = NULL, *tmp;
+	unsigned long int pos, n = 0;
+	hash_node_t *data = NULL, *current;
 
 	if (key == NULL)
 		return (0);
+
+	pos = key_index((unsigned char *)key, ht->size);
+	current = ht->array[pos];
+
+	while (n < ht->size)
+	{
+		if (current != NULL && strcmp(current->key, key) == 0)
+		{
+			free(current->value);
+			current->value = value != NULL ? _strdup((char *)value) : NULL;
+			return (1);
+		}
+		n++;
+	}
 
 	data = (hash_node_t *)malloc(sizeof(hash_node_t));
 	if (data == NULL)
 		return (0);
 
-	pos = key_index((unsigned char *)key, ht->size);
 	data->key = _strdup((char *)key);
 	data->value = value != NULL ? _strdup((char *)value) : NULL;
 
-	if (ht->array[pos] == NULL)
-	{
-		data->next = NULL;
-		ht->array[pos] = data;
-	}
-	else
-	{
-		tmp = ht->array[pos];
-		data->next = tmp;
-		ht->array[pos] = data;
-	}
+	data->next = current;
+	ht->array[pos] = data;
+
 	return (1);
 }
