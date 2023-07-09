@@ -14,7 +14,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 	if (sorted_data_table == NULL)
 		return (NULL);
 
-	sorted_data_table->array = (shash_node_t **)malloc(sizeof(shash_node_t *) * size);
+	sorted_data_table->array = (shash_node_t **)malloc(sizeof(shash_node_t *)
+			* size);
 
 	if (sorted_data_table->array == NULL)
 		return (NULL);
@@ -30,6 +31,48 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
+ * sort_hash_table - sorts or arrange the hash table in a sorted way.
+ * @ht: pointer to the hash table to sort.
+ * @data: pointer to the current data node being created.
+ * @key: pointer to the element's key.
+ * Return: void
+ */
+void sort_hash_table(shash_table_t *ht, shash_node_t *data, const char *key)
+{
+	shash_node_t *sorted_list;
+
+	if (ht->shead == NULL)
+	{
+		ht->shead = data;
+		ht->shead->snext = NULL;
+		ht->shead->sprev = NULL;
+		ht->stail = data;
+	}
+	else if (strcmp(ht->shead->key, key) > 0)
+	{
+		data->sprev = NULL;
+		data->snext = ht->shead;
+		ht->shead->sprev = data;
+		ht->shead = data;
+	}
+	else
+	{
+		sorted_list = ht->shead;
+		while (sorted_list->snext != NULL && strcmp(sorted_list->snext->key,
+					key) < 0)
+			sorted_list = sorted_list->snext;
+		data->sprev = sorted_list;
+		data->snext = sorted_list->snext;
+		if (sorted_list->snext == NULL)
+			ht->stail = data;
+		else
+			sorted_list->snext->sprev = data;
+		sorted_list->snext = data;
+	}
+
+}
+
+/**
  * shash_table_set - adds an element to the hash table.
  * @ht: pointer to the hash table.
  * @key: pointer to the key(string) of an element.
@@ -39,7 +82,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int pos, n = 0;
-	shash_node_t *data = NULL, *current, *sorted_list;
+	shash_node_t *data = NULL, *current;
 
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (0);
@@ -67,33 +110,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	data->next = current;
 	ht->array[pos] = data;
 
-	if (ht->shead == NULL)
-	{
-		ht->shead = data;
-		ht->shead->snext = NULL;
-		ht->shead->sprev = NULL;
-		ht->stail = data;
-	}
-	else if (strcmp(ht->shead->key, key) > 0)
-	{
-		data->sprev = NULL;
-		data->snext = ht->shead;
-		ht->shead->sprev = data;
-		ht->shead = data;
-	}
-	else
-	{
-		sorted_list = ht->shead;
-		while (sorted_list->snext != NULL && strcmp(sorted_list->snext->key, key) < 0)
-			sorted_list = sorted_list->snext;
-		data->sprev = sorted_list;
-		data->snext = sorted_list->snext;
-		if (sorted_list->snext == NULL)
-			ht->stail = data;
-		else
-			sorted_list->snext->sprev = data;
-		sorted_list->snext = data;
-	}
+	sort_hash_table(ht, data, key);
 
 	return (1);
 }
