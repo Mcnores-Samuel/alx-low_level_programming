@@ -3,8 +3,8 @@
 /**
  * search_algorithm - searches for a given value in an array using
  * binary_search algorithm.
- * @array: pointer to an array to search
- * @size: size of an array
+ * @array: is a pointer to the first element of the array to search in
+ * @size: size is the number of elements in array
  * @left: the lesser most position in the array
  * @right: the greater most position in the array
  * @search_value: a value to be searched in the array
@@ -46,8 +46,8 @@ int search_algorithm(int *array, size_t size,
 /**
  * binary_search - invokes search_algorithm function to perform a
  * search.
- * @array: an array to be searched
- * @size: size of the array
+ * @array: a is a pointer to the first element of the array to search in
+ * @size: size is the number of elements in array
  * @value: value to be searched in the array
  * Return: index of the value searched or -1 otherwise
  */
