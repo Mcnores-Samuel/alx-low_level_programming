@@ -32,9 +32,7 @@ int search_algorithm(int *array, size_t size,
 		printf("\n");
 		mid_point = left + (right - left) / 2;
 
-		if (array[mid_point] == search_value &&
-				(mid_point == left || array[mid_point - 1]
-				 != search_value))
+		if (array[mid_point] == search_value)
 			return (mid_point);
 
 		if (array[mid_point] < search_value)
